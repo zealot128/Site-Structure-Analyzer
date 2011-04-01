@@ -1,0 +1,36 @@
+h1. Site Structure Analyzer 
+
+Webspider (anemone) with a Rails analysis app on top.
+
+h2. Usage
+
+* Edit your database.yml and *config/spider.yml*
+* bundle install
+* migrate
+* rake spider:start
+* Wait a night
+* rake spider:refresh
+** Will refresh the cached count columns for every page. This is necessary for sorting and displaying of links and backlinks count in the overview
+* open localhost:3000/pages
+
+
+*Tested* with ruby 1.8.7 only!
+
+
+When you like to crawl again or a new page clear out the database before (TODO):
+
+<pre>
+  rake spider:clear
+  rake spider:start
+</pre>
+
+Using the unix tool "screen" is very nice for not having to run my client machine all the time while crawling on a different machine btw.
+
+h2. TODO
+
+* i18n
+* more filtering options
+* support multiple domains (up to now, you can specify one in the config/spider.yml and have to clear out everything
+* Speed of Crawling... ideas? anyone? threading seems not to work
+* ...
+
