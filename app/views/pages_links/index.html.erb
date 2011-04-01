@@ -1,0 +1,29 @@
+<h1>Listing pages_links</h1>
+
+<table>
+  <tr>
+    <th>From page</th>
+    <th>To page</th>
+    <th>No follow</th>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pages_links.each do |pages_link| %>
+  <tr>
+    <td><%= pages_link.from_page_id %></td>
+    <td><%= pages_link.to_page_id %></td>
+    <td><%= pages_link.no_follow %></td>
+    <td><%= pages_link.title %></td>
+    <td><%= link_to 'Show', pages_link %></td>
+    <td><%= link_to 'Edit', edit_pages_link_path(pages_link) %></td>
+    <td><%= link_to 'Destroy', pages_link, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pages link', new_pages_link_path %>

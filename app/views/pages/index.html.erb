@@ -1,0 +1,28 @@
+<h1>Listing pages</h1>
+
+<%=table_for @pages, :batch_actions => {} do |t|
+  t.column :title do |item|
+    if item.title
+      link_to truncate(item.title, :length => 50), item
+    else
+      "-"
+    end
+  end
+  t.column :url do |item|
+    if item.url
+      link_to truncate(item.url, :length => 80), item.url, :target => "_blank"
+    else
+      ""
+    end
+  end
+  t.column :status_code
+  t.column :size do |item|
+    (item.size / 1024).to_s + "kb" rescue "-"
+  end
+  t.column :links_count do |item|
+    link_to (item.links_count || "?"), links_page_seo_index_path(item), :rel => :facebox
+  end
+  t.column :backlinks_count do |item|
+    link_to (item.backlinks_count || "?"), backlinks_page_seo_index_path(item), :rel => :facebox
+  end
+end %>

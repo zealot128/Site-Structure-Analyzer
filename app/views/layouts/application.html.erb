@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SiteStructureAnalyzer</title>
+  <%= stylesheet_link_tag :all ,:tabulatr %>
+  <%= stylesheet_link_tag  "/facebox/facebox.css" %>
+  <%= javascript_include_tag :defaults, "/facebox/facebox" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div id='container'>
+  <nav>
+  
+  <span>SiteStructureAnalyzer</span>
+    <span><%= link_to "Seiten", pages_path %></span>
+  
+  </nav>
+
+<%= yield %>
+</div>
+</body>
+</html>

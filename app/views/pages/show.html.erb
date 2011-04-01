@@ -1,0 +1,19 @@
+<h2>Seite: <%= @page.url %></h2>
+<div class='info'>
+  <ul>
+    <li><%= link_to @page.url,@page.url, :target => "_blank" %>, <%= @page.title %></li>
+    <li>Status: <%= @page.status_code %> (200 heißt, alles in Ordnung)</li>
+    <li><%= @page.backlinks.count %> <b>Backlinks</b> ingesamt</li>
+    <li>davon <%= @page.backlinks.group(:from_page_id).all.count %> <b>Backlinks von einmaligen Seiten</b></li>
+    <li><%= @page.links.count %> <b>Links</b> ingesamt</li>
+    <li>davon <%= @page.links.group(:to_page_id).all.count %> Links effektiv einmalige Seiten</li>
+  </ul>
+</div>
+
+
+<a href='<%= backlinks_page_seo_index_path(@page) %>' class='remote-toggle' id='open-links'>Links auf diese Seite anzeigen (Backlinks)</a>
+<div id='open-links-container'></div>
+
+
+<a href='<%= links_page_seo_index_path(@page) %>' class='remote-toggle'  id='open-backlinks'>Links von dieser Seite anzeigen</a>
+<div id='open-backlinks-container'></div>

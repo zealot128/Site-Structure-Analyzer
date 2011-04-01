@@ -1,0 +1,33 @@
+<%= form_for(@pages_link) do |f| %>
+  <% if @pages_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pages_link.errors.count, "error") %> prohibited this pages_link from being saved:</h2>
+
+      <ul>
+      <% @pages_link.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :from_page_id %><br />
+    <%= f.text_field :from_page_id %>
+  </div>
+  <div class="field">
+    <%= f.label :to_page_id %><br />
+    <%= f.text_field :to_page_id %>
+  </div>
+  <div class="field">
+    <%= f.label :no_follow %><br />
+    <%= f.check_box :no_follow %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

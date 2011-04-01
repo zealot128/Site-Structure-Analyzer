@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>From page:</b>
+  <%= @pages_link.from_page_id %>
+</p>
+
+<p>
+  <b>To page:</b>
+  <%= @pages_link.to_page_id %>
+</p>
+
+<p>
+  <b>No follow:</b>
+  <%= @pages_link.no_follow %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @pages_link.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_pages_link_path(@pages_link) %> |
+<%= link_to 'Back', pages_links_path %>

@@ -1,0 +1,5 @@
+de:
+  views:
+    pagination:
+      previous: "&lt; Vorherige"
+      next: "Nächste &rt;"

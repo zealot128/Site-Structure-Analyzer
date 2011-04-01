@@ -1,0 +1,23 @@
+<h2>Links von dieser Seite</h2>
+
+<table class="tabulatr_table">
+  <tr>
+    <th>A:Title</th>
+    <th>A:nofollow</th>
+    <th>A:url</th>
+  </tr>
+<% @pages_links.each do |item| %>
+  <tr>
+    <td><%=truncate item.title, :length => 70 %></td>
+    <td><%= item.no_follow %></td>
+    <td>
+      <%= link_to truncate(item.to_page.url, :length => 70), item.to_page %>
+    </td>
+    <td>
+      <%= link_to item.to_page do %>
+        <%= image_tag "/images/search_button_16.png" %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
