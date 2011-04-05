@@ -17,6 +17,6 @@ namespace :spider do
 
   desc "Refresh the link/backlink count columns of pages for sorting purpose. Should be done after crawling a site"
   task :refresh_count => :environment  do |t,args|
-    Page.self.update_links_count
+    Page.update_links_count
   end
 end

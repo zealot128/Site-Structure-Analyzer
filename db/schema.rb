@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110401100457) do
+ActiveRecord::Schema.define(:version => 20110404220001) do
 
   create_table "pages", :force => true do |t|
     t.string  "url"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20110401100457) do
     t.integer "to_page_id"
     t.boolean "no_follow"
     t.string  "title"
+    t.string  "inner_text"
   end
 
   add_index "pages_links", ["from_page_id"], :name => "index_pages_links_on_from_page_id"

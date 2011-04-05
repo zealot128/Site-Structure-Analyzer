@@ -2,8 +2,9 @@
 
 <table class="tabulatr_table">
   <tr>
-    <th>A:Title</th>
-    <th>A:nofollow</th>
+    <th><acronym title="Titel Attribut des zeigenden Links">A:Title</acronym></th>
+    <th><acronym title="Text/Beschreibung des Links">A:InnerText</acronym></th>
+    <th>A:nofollow?</th>
     <th colspan="2">A:url</th>
     <th># Backlinks von hier</th>
   </tr>
@@ -13,9 +14,12 @@
     count = items.count
 %>
   <tr>
-    <td><%=truncate item.title, :length => 70 %></td>
+    <td><acronym title="<%=item.title %>">
+        <%=truncate item.title, :length => 40 %>
+    </acronym></td>
+    <td><acronym title="<%=item.title %>"><%=truncate item.inner_text, :length => 40 %></acronym></td>
     <td><%= item.no_follow %></td>
-    <td><%= link_to truncate(item.from_page.url, :length => 70), item.from_page.url, :target => "_blank" %> </td>
+    <td><%= format_page item.from_page %> </td>
     
     <td>
       <%= link_to item.from_page do %>

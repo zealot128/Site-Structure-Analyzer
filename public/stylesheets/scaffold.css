@@ -56,13 +56,17 @@ div.field, div.actions {
 }
 #container { 
   margin: 20px auto;
-      width: 1200px;
+      width: 90%;
       background: white;
       padding: 10px;
 }
 
 body {
   background-color: #eef; }
+
+td a {
+  display: block;
+}
 
 nav span {
   font-size: 200%;

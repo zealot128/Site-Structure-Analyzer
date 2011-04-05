@@ -2,17 +2,17 @@
 
 <table class="tabulatr_table">
   <tr>
-    <th>A:Title</th>
+    <th><acronym title="Titel Attribut des zeigenden Links">A:Title</acronym></th>
+    <th><acronym title="Text/Beschreibung des Links">A:InnerText</acronym></th>
     <th>A:nofollow</th>
     <th>A:url</th>
   </tr>
 <% @pages_links.each do |item| %>
   <tr>
-    <td><%=truncate item.title, :length => 70 %></td>
+    <td><%=format_link_text item.title %></td>
+    <td><%=format_link_text item.inner_text %></td>
     <td><%= item.no_follow %></td>
-    <td>
-      <%= link_to truncate(item.to_page.url, :length => 70), item.to_page %>
-    </td>
+    <td><%= format_page item.to_page %> </td>
     <td>
       <%= link_to item.to_page do %>
         <%= image_tag "/images/search_button_16.png" %>
