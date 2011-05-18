@@ -2,4 +2,5 @@ domain: http://www.itsax.de
 ignore_links: 
   - "javascript:"
   - "/search/"
+  - "/static"
 depth_limit: 4
