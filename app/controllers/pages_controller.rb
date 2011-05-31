@@ -3,11 +3,10 @@ class PagesController < ApplicationController
   # GET /pages.xml
   def index
     @pages = Page.find_for_table(params)
-
   end
 
   def problems
-    @pages = Page.where("status_code > '200'").find_for_table(params)
+    @pages = Page.where("status_code > '200' or url like '%q=%'").find_for_table(params)
     render :action => :index
   end
 
