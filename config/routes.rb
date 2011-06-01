@@ -1,8 +1,9 @@
 SiteStructureAnalyzer::Application.routes.draw do
 
   resources :pages do
-    collection do 
+    collection do
       get :problems
+      get :nofollow
     end
     resources :pages_links, :as => :seo do
       collection do

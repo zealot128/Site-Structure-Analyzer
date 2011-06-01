@@ -10,6 +10,12 @@ class PagesController < ApplicationController
     render :action => :index
   end
 
+  def nofollow
+    @pages = Page.joins(:to_pages_links).where("pages.external=1").where("pages_links.no_follow = 0").group("pages.id").find_for_table(params)
+
+    render :action => :index
+  end
+
   # GET /pages/1
   # GET /pages/1.xml
   def show
