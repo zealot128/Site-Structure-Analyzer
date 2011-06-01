@@ -15,11 +15,7 @@ gem "bson_ext"
 gem "tabulatr"
 gem "wirble"
 gem "mechanize"
-gem "mongrel"
-gem "cgi_multipart_eof_fix"
-gem "fastthread"
-gem "mongrel_experimental"
- 
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

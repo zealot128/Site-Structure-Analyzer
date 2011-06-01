@@ -4,13 +4,13 @@
 namespace :spider do
   desc "Spider whole given domain"
   task :start => :environment  do |t,args|
-    require "lib/spider_helper"
+    require "spider_helper"
     require "benchmark"
     puts "deleting all former entries"
 
     Page.delete_all
     PagesLink.delete_all
-    bm=Benchmark.measure do 
+    bm=Benchmark.measure do
       s = SpiderHelper.new(SPIDER_CONFIG)
       s.crawl
       puts "Done, updating Links count"
