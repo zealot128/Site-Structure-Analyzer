@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110404220001) do
+ActiveRecord::Schema.define(:version => 20110601083124) do
 
   create_table "pages", :force => true do |t|
     t.string  "url"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110404220001) do
     t.text    "aliase"
     t.integer "links_count"
     t.integer "backlinks_count"
+    t.boolean "external"
   end
 
   create_table "pages_links", :force => true do |t|
