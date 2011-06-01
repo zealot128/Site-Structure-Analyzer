@@ -65,13 +65,13 @@ class SpiderHelper
     return if doc.nil?
     doc.search("a").each do  |a|
       target_link = URI.parse(a.attributes["href"].value) rescue next
+      next if a.attributes["href"].value.include? "mailto:"
       nofollow = a.attributes["rel"].value.include?("nofollow") rescue false
       title = a.attributes["title"].value rescue ""
       inner_text = a.inner_text
 
       next if @ignore.any? {|keyword| target_link.to_s.include? keyword}
       next if target_link == "" or target_link.nil?
-      next if target_link.include? "mailto:"
       target_link = URI.join page.url, target_link rescue next
 
       target_link = normalize_link(target_link)
