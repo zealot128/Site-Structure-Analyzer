@@ -1,5 +1,15 @@
 <h1>Alle gecrawlten Seiten</h1>
-<%= link_to "potenzielle Problemseiten", "/pages/problems" %>
+<ul>
+  <li>
+    <%= link_to "potenzielle Problemseiten -> StatusCode nicht 200, oder hat ?q= in der URL", "/pages/problems" %>
+  </li>
+  <li>
+    <%= link_to "Externe mit min. 1 Backlink ohne relnofollow", "/pages/nofollow" %>
+  </li>
+  <li>
+    <%= link_to "Alle", "/pages" %>
+  </li>
+</ul>
 
 <%=table_for @pages,     {
   :select_controls => [],
@@ -21,14 +31,15 @@
       ""
     end
   end
-  t.column :status_code
+  t.column :status_code, :header => "Status"
   t.column :size do |item|
     (item.size / 1024).to_s + "kb" rescue "-"
   end
-  t.column :links_count do |item|
+  t.column :links_count, :header => "links #" do |item|
     link_to (item.links_count || "?"), links_page_seo_index_path(item), :rel => :facebox
   end
-  t.column :backlinks_count do |item|
+  t.column :backlinks_count, :header => "Backlink #" do |item|
     link_to (item.backlinks_count || "?"), backlinks_page_seo_index_path(item), :rel => :facebox
   end
+  t.column :external, :header => "Extern"
 end %>
