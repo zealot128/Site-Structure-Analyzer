@@ -34,6 +34,7 @@ class SpiderHelper
           p.status_code = page.code
           p.size = page.body.length
           p.title = title || ""
+          new_record = p.new_record?
           p.save
 
           begin
@@ -45,7 +46,9 @@ class SpiderHelper
             puts e.backtrace
             puts "ERROR:".red + "#{page.url}"
           end
-          process_link(page.doc, p)
+          if new_record
+            process_link(page.doc, p)
+          end
         end
 
         anemone.skip_links_like( *@ignore.map{|i| Regexp.new i} )
