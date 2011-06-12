@@ -12,7 +12,11 @@ class PagesController < ApplicationController
 
   def nofollow
     @pages = Page.joins(:to_pages_links).where("pages.external=1").where("pages_links.no_follow = 0").group("pages.id").find_for_table(params)
+    render :action => :index
+  end
 
+  def w3cproblems
+    @pages = Page.where("w3errors > 0").find_for_table(params)
     render :action => :index
   end
 

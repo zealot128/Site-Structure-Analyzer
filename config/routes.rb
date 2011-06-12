@@ -4,6 +4,7 @@ SiteStructureAnalyzer::Application.routes.draw do
     collection do
       get :problems
       get :nofollow
+      get :w3cproblems
     end
     resources :pages_links, :as => :seo do
       collection do

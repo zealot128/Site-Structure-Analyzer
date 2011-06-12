@@ -34,7 +34,8 @@ class SpiderHelper
         p.status_code = page.code
         p.size = page.body.length
         p.title = title || ""
-        p.w3validate(page.body)
+
+        p.w3validate(page.body) if code < 300
         p.save
 
         begin

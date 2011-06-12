@@ -19,4 +19,8 @@ class Page < ActiveRecord::Base
     self.w3errors = @@validator.validate_text(body).errors.count
   end
 
+  def validate_url
+    URI.join( SPIDER_CONFIG['w3c_url'], "?uri=#{CGI.escape(self.url)}" ).to_s
+  end
+
 end
