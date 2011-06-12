@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110601083124) do
+ActiveRecord::Schema.define(:version => 20110612193514) do
 
   create_table "pages", :force => true do |t|
     t.string  "url"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20110601083124) do
     t.integer "links_count"
     t.integer "backlinks_count"
     t.boolean "external"
+    t.integer "w3errors"
   end
 
   create_table "pages_links", :force => true do |t|

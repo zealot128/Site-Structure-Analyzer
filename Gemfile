@@ -15,6 +15,7 @@ gem "bson_ext"
 gem "tabulatr"
 gem "wirble"
 gem "mechanize"
+gem "w3c_validators"
 
 
 # Use unicorn as the web server

@@ -1,6 +1,7 @@
 domain: http://www.itmitte.de
-ignore_links: 
+ignore_links:
   - "javascript:"
   - "/search/"
   - "/static"
 depth_limit: 4
+w3c_url: 'http://validator.it-jobs-und-stellen.de/w3c-validator/check'

@@ -23,34 +23,35 @@ class SpiderHelper
     options[:depth_limit] = @depth_limit if @depth_limit
 
     require "benchmark"
-      Anemone.crawl(@domain,options) do |anemone|
-        #anemone.storage = Anemone::Storage.MongoDB
+    Anemone.crawl(@domain,options) do |anemone|
+      #anemone.storage = Anemone::Storage.MongoDB
 
-        anemone.on_every_page do |page|
-          title =  page.doc.at('title').inner_html rescue ""
+      anemone.on_every_page do |page|
+        title =  page.doc.at('title').inner_html rescue ""
 
-          p = Page.find_or_initialize_by_url normalize_link(page.url).to_s
+        p = Page.find_or_initialize_by_url normalize_link(page.url).to_s
 
-          p.status_code = page.code
-          p.size = page.body.length
-          p.title = title || ""
-          p.save
+        p.status_code = page.code
+        p.size = page.body.length
+        p.title = title || ""
+        p.w3validate(page.body)
+        p.save
 
-          begin
-            code = page.code
-            code = code >= 300 ?  code.to_s.yellow : code.to_s.green
-            puts "#{code} " + truncate(page.url.to_s, :length => 80).light_white + " " + truncate(title).light_green
-          rescue Exception => e
-            puts e.inspect
-            puts e.backtrace
-            puts "ERROR:".red + "#{page.url}"
-          end
-          process_link(page.doc, p)
+        begin
+          code = page.code
+          code = code >= 300 ?  code.to_s.yellow : code.to_s.green
+          puts "#{code} " + truncate(page.url.to_s, :length => 80).light_white + " " + truncate(title).light_green
+        rescue Exception => e
+          puts e.inspect
+          puts e.backtrace
+          puts "ERROR:".red + "#{page.url}"
         end
-
-        anemone.skip_links_like( *@ignore.map{|i| Regexp.new i} )
-
+        process_link(page.doc, p)
       end
+
+      anemone.skip_links_like( *@ignore.map{|i| Regexp.new i} )
+
+    end
   end
 
   def normalize_link(uri)
