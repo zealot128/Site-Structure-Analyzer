@@ -45,6 +45,10 @@
   end
   t.column :external, :header => "Extern"
   t.column :w3errors, :header => "Anz. W3 Fehler" do |page|
-    link_to page.w3errors, page.validate_url, :target => "_blank"
+    if page.w3errors? and page.w3errors > 0
+      link_to page.w3errors, page.validate_url, :target => "_blank"
+    else
+      "0"
+    end
   end
 end %>
