@@ -1,7 +1,13 @@
-domain: http://www.itmitte.de
+domain: http://www.itsax.de
 ignore_links:
   - "javascript:"
   - "/search/"
   - "/static"
+  - "feed/praktika"
+  - "feed/jobs"
+  - "/files/"
+  - "/ical/"
+  - "/news/"
 depth_limit: 4
 w3c_url: 'http://validator.it-jobs-und-stellen.de/w3c-validator/check'
+w3c_check_active: true

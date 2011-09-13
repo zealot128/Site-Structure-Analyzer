@@ -15,8 +15,10 @@ class Page < ActiveRecord::Base
   end
 
   def w3validate(body)
-    @@validator ||= W3CValidators::MarkupValidator.new(:validator_uri => SPIDER_CONFIG['w3c_url'])
-    self.w3errors = @@validator.validate_text(body).errors.count
+    if SPIDER_CONFIG["w3c_check_active"]
+      @@validator ||= W3CValidators::MarkupValidator.new(:validator_uri => SPIDER_CONFIG['w3c_url'])
+      self.w3errors = @@validator.validate_text(body).errors.count
+    end
   end
 
   def validate_url
