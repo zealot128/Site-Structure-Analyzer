@@ -57,7 +57,7 @@ class SpiderHelper
     test_fragment = uri.dup
     test_fragment.fragment = nil
     test_fragment.scheme = "http"
-    text_fragment
+    test_fragment
 
   end
 
