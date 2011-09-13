@@ -1,4 +1,4 @@
-h1. Site Structure Analyzer 
+h1. Site Structure Analyzer
 
 Webspider (anemone) with a Rails analysis app on top.
 
@@ -13,6 +13,7 @@ h2. Usage
 ** Will refresh the cached count columns for every page. This is necessary for sorting and displaying of links and backlinks count in the overview
 * open localhost:3000/pages
 
+* Validator: This also supports to check for W3 Parsing Errors. See spider.yml "w3c_url:" to a private W3 Installation, or set it to nil
 
 *Tested* with ruby 1.8.7 only!
 
